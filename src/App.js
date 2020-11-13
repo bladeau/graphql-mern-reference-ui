@@ -1,27 +1,34 @@
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { useState, useEffect } from 'react';
 
-const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
-  cache: new InMemoryCache(),
-});
-function App() {
+const App = () => {
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const client = new ApolloClient({
+      uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+      cache: new InMemoryCache(),
+    });
+
+    client
+      .query({
+        query: gql`
+          {
+            allPosts {
+              id
+              title
+              description
+            }
+          }
+        `,
+      })
+      .then((result) => setPosts(result.data.allPosts));
+  }, []);
+
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <p>{posts.length > 0 ? JSON.stringify(posts) : 'Loading...'}</p>
+    </>
   );
-}
+};
 
 export default App;
