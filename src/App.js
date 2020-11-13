@@ -1,5 +1,4 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import { useState, useEffect } from 'react'
 
 // import provider components
 import Home from './pages/Home'
