@@ -26,7 +26,24 @@ const App = () => {
 
   return (
     <>
-      <p>{posts.length > 0 ? JSON.stringify(posts) : 'Loading...'}</p>
+      <div className='container p-5'>
+        <div className='row p-5'>
+          {posts.length > 0
+            ? posts.map((p) => (
+                <div className='col-md-4' key={p.id}>
+                  <div className='card'>
+                    <div className='card-body'>
+                      <div className='card-title'>
+                        <h4>{p.title}</h4>
+                        <p className='card-text'>{p.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            : 'Loading...'}
+        </div>
+      </div>
     </>
   );
 };
