@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const Nav = () => {
+const Nav = () => {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-      <Link className='navbar-brand' to='#'>
+      <Link className='navbar-brand' to='/'>
         Navbar
       </Link>
       <button
@@ -50,3 +50,5 @@ export const Nav = () => {
     </nav>
   )
 }
+
+export default Nav
