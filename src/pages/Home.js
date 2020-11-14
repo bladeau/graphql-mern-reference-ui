@@ -1,6 +1,7 @@
 import { gql, useQuery, useLazyQuery } from '@apollo/client'
 import { useContext } from 'react'
 import { AuthContext } from '../context/authContext'
+import { useHistory } from 'react-router-dom'
 
 const GET_ALL_POSTS = gql`
   {
@@ -18,6 +19,9 @@ const Home = () => {
 
   // access context
   const { state, dispatch } = useContext(AuthContext)
+
+  // react router
+  let history = useHistory()
 
   const updateUserName = () => {
     dispatch({
@@ -61,6 +65,8 @@ const Home = () => {
       <button className='btn btn-primary' onClick={updateUserName}>
         Change User name
       </button>
+      <hr />
+      {JSON.stringify(history)}
     </div>
   )
 }

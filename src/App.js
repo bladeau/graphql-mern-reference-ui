@@ -1,4 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import { Nav } from './components/Nav'
 
 // import provider components
 import Home from './pages/Home'
@@ -11,6 +12,7 @@ const App = () => {
   return (
     <>
       <ApolloProvider client={client}>
+        <Nav />
         <Home />
       </ApolloProvider>
     </>
